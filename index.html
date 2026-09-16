@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Integrale Homes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;500&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F5F2EA;
+    --surface:#FFFFFF;
+    --ink:#211D18;
+    --ink-soft:#5B5548;
+    --ink-faint:#8B8577;
+    --accent:#8B6B3D;
+    --accent-deep:#6B5029;
+    --line:#DED7C8;
+    --line-strong:#C7BEA9;
+  }
+  :root:not([data-theme="light"]){
+    /* dark mode fallback, guarded below */
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17140F;
+      --surface:#211D18;
+      --ink:#F1ECE0;
+      --ink-soft:#C9C2AF;
+      --ink-faint:#8B8577;
+      --accent:#C9A063;
+      --accent-deep:#E0B87D;
+      --line:#3A342A;
+      --line-strong:#4A4335;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17140F;
+    --surface:#211D18;
+    --ink:#F1ECE0;
+    --ink-soft:#C9C2AF;
+    --ink-faint:#8B8577;
+    --accent:#C9A063;
+    --accent-deep:#E0B87D;
+    --line:#3A342A;
+    --line-strong:#4A4335;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Public Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Roboto Slab', Georgia, serif;
+    font-weight:400;
+    letter-spacing:-0.01em;
+    margin:0;
+  }
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px;}
+  .overflow-x{overflow-x:auto;}
+
+  /* ---------- placeholder art (stand-in for real project photography) ---------- */
+  .ph{
+    position:relative;
+    background:
+      linear-gradient(135deg, rgba(139,107,61,0.14), rgba(139,107,61,0.03)),
+      repeating-linear-gradient(0deg, transparent, transparent 27px, rgba(139,107,61,0.10) 27px, rgba(139,107,61,0.10) 28px);
+    background-color:var(--surface);
+    border:0.5px solid var(--line);
+    display:flex;
+    align-items:flex-end;
+    overflow:hidden;
+  }
+  .ph::before{
+    content:"";
+    position:absolute; inset:0;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:24px 24px;
+    opacity:0.35;
+  }
+  .ph-label{
+    position:relative;
+    padding:14px 16px;
+    font-size:12px;
+    color:var(--ink-faint);
+    background:linear-gradient(to top, var(--surface) 40%, transparent);
+    width:100%;
+  }
+
+  /* ---------- top bar ---------- */
+  .topbar{border-bottom:0.5px solid var(--line);}
+  .topbar-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:22px 0;
+  }
+  .wordmark{font-size:13px; letter-spacing:0.14em; font-weight:500;}
+  .wordmark span{color:var(--accent);}
+  nav{display:flex; gap:36px; align-items:center;}
+  nav a{font-size:14px; color:var(--ink-soft);}
+  nav a.current{color:var(--ink); border-bottom:1.5px solid var(--accent); padding-bottom:4px;}
+  .btn-line{
+    font-size:13px; color:var(--ink); border:0.5px solid var(--line-strong);
+    padding:10px 20px; border-radius:2px; white-space:nowrap;
+  }
+
+  /* ---------- hero ---------- */
+  .hero{padding:72px 0 0;}
+  .hero-eyebrow{font-size:13px; color:var(--accent-deep, var(--accent)); margin-bottom:18px;}
+  .hero h1{font-size:52px; line-height:1.08; max-width:780px;}
+  .hero p.lead{
+    font-size:17px; line-height:1.65; color:var(--ink-soft);
+    max-width:520px; margin:26px 0 34px;
+  }
+  .hero-ctas{display:flex; gap:16px; margin-bottom:56px;}
+  .btn-solid{
+    background:var(--ink); color:var(--bg); font-size:14px;
+    padding:14px 26px; border-radius:2px;
+  }
+  .hero-image{
+    height:420px;
+  }
+  .ph-label b{color:var(--ink);}
+
+  /* ---------- stat band ---------- */
+  .stats{border-top:0.5px solid var(--line); border-bottom:0.5px solid var(--line);}
+  .stats-grid{
+    display:grid; grid-template-columns:repeat(4,1fr);
+  }
+  .stat{
+    padding:38px 32px; border-left:0.5px solid var(--line);
+  }
+  .stat:first-child{border-left:none;}
+  .stat .num{font-family:'Roboto Slab', serif; font-size:40px; color:var(--accent-deep, var(--accent)); line-height:1;}
+  .stat .cap{font-size:13.5px; color:var(--ink-soft); margin-top:10px; line-height:1.45; max-width:220px;}
+
+  /* ---------- section heading ---------- */
+  .section{padding:88px 0;}
+  .section-head{
+    display:flex; justify-content:space-between; align-items:flex-end;
+    margin-bottom:44px; gap:40px;
+  }
+  .section-head h2{font-size:32px; max-width:520px;}
+  .section-head p{font-size:15px; color:var(--ink-soft); max-width:340px; line-height:1.6;}
+
+  /* ---------- filter tabs ---------- */
+  .filters{display:flex; gap:10px; margin-bottom:36px; flex-wrap:wrap;}
+  .filter{
+    font-size:13.5px; padding:9px 18px; border-radius:20px;
+    border:0.5px solid var(--line-strong); color:var(--ink-soft);
+  }
+  .filter.active{background:var(--ink); color:var(--bg); border-color:var(--ink);}
+
+  /* ---------- project gallery ---------- */
+  .gallery{display:grid; grid-template-columns:repeat(3,1fr); gap:28px;}
+  .card{border:0.5px solid var(--line); background:var(--surface);}
+  .card .ph{height:190px;}
+  .card-body{padding:20px 22px 24px;}
+  .card-tag{font-size:11.5px; color:var(--accent-deep, var(--accent)); margin-bottom:8px;}
+  .card h3{font-size:19px; margin-bottom:8px;}
+  .card-meta{
+    display:flex; gap:18px; font-size:13px; color:var(--ink-soft);
+    border-top:0.5px solid var(--line); margin-top:16px; padding-top:14px;
+  }
+  .card-meta span{display:flex; flex-direction:column; gap:2px;}
+  .card-meta b{color:var(--ink); font-weight:500; font-size:14px;}
+
+  /* ---------- capability section ---------- */
+  .capability{background:var(--surface); border-top:0.5px solid var(--line); border-bottom:0.5px solid var(--line);}
+  .cap-grid{display:grid; grid-template-columns:1.1fr 1fr; gap:64px; align-items:flex-start;}
+  .cap-list{display:flex; flex-direction:column;}
+  .cap-item{
+    display:grid; grid-template-columns:110px 1fr; gap:20px;
+    padding:26px 0; border-top:0.5px solid var(--line);
+  }
+  .cap-item:last-child{border-bottom:0.5px solid var(--line);}
+  .cap-item .tag{font-size:12.5px; color:var(--ink-faint); padding-top:3px;}
+  .cap-item h3{font-size:17px; margin-bottom:8px;}
+  .cap-item p{font-size:14.5px; color:var(--ink-soft); line-height:1.6; margin:0;}
+  .cap-image{height:100%; min-height:460px;}
+
+  /* ---------- enquiry ---------- */
+  .enquiry{padding:96px 0;}
+  .enquiry-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px;}
+  .enquiry h2{font-size:34px; max-width:420px; margin-bottom:20px;}
+  .enquiry p{font-size:15px; color:var(--ink-soft); line-height:1.65; max-width:400px;}
+  .enquiry-contact{margin-top:32px; font-size:14.5px; color:var(--ink-soft); line-height:2;}
+  .enquiry-contact b{color:var(--ink); font-weight:500;}
+  form{display:flex; flex-direction:column; gap:16px;}
+  .row2{display:grid; grid-template-columns:1fr 1fr; gap:16px;}
+  label{font-size:12.5px; color:var(--ink-soft); display:block; margin-bottom:7px;}
+  input, select, textarea{
+    width:100%; font-size:14.5px; font-family:inherit; color:var(--ink);
+    background:var(--surface); border:0.5px solid var(--line-strong);
+    border-radius:2px; padding:12px 14px;
+  }
+  textarea{resize:vertical; min-height:96px;}
+  .submit{
+    margin-top:6px; align-self:flex-start;
+    background:var(--ink); color:var(--bg); font-size:14px;
+    padding:14px 30px; border:none; border-radius:2px; cursor:pointer;
+  }
+
+  /* ---------- footer ---------- */
+  footer{border-top:0.5px solid var(--line); padding:40px 0; }
+  .foot-row{display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink-faint);}
+
+  @media (max-width:920px){
+    .wrap{padding:0 20px;}
+    .hero h1{font-size:36px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .stat{border-left:none; border-top:0.5px solid var(--line);}
+    .stat:nth-child(1),.stat:nth-child(2){border-top:none;}
+    .gallery{grid-template-columns:1fr;}
+    .cap-grid{grid-template-columns:1fr;}
+    .cap-image{min-height:260px;}
+    .enquiry-grid{grid-template-columns:1fr;}
+    .row2{grid-template-columns:1fr;}
+    nav{display:none;}
+    .section-head{flex-direction:column; align-items:flex-start;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap topbar-inner">
+    <div class="wordmark">INTEGRALE<span>·</span>HOMES</div>
+    <nav>
+      <a href="#">Home Designs</a>
+      <a href="#">Display Homes</a>
+      <a href="#" class="current">Projects</a>
+      <a href="#">About</a>
+      <a href="#">Contact</a>
+    </nav>
+    <a href="#enquiry" class="btn-line">Discuss a development</a>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="hero-eyebrow">Multi-unit and masterplanned delivery</div>
+    <h1 class="display">building communities, not just houses</h1>
+    <p class="lead">Integrale Homes partners with developers and commercial landholders to deliver retirement living, medium-density townhouses and knock-down rebuild duplex programs across South East Queensland — with the same fixed-price discipline we bring to every home we build.</p>
+    <div class="hero-ctas">
+      <a href="#enquiry" class="btn-solid">Discuss your project</a>
+      <a href="#gallery" class="btn-line">View completed work</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="ph hero-image">
+      <div class="ph-label">Hero photograph — aerial or street view of a completed retirement village or townhouse precinct</div>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat">
+        <div class="num">300+</div>
+        <div class="cap">single-level retirement village homes delivered</div>
+      </div>
+      <div class="stat">
+        <div class="num">58</div>
+        <div class="cap">attached townhouses in a single precinct</div>
+      </div>
+      <div class="stat">
+        <div class="num">48</div>
+        <div class="cap">townhouses across a second delivery</div>
+      </div>
+      <div class="stat">
+        <div class="num">10+</div>
+        <div class="cap">knock-down rebuild sites converted to new duplexes</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="section" id="gallery">
+  <div class="wrap">
+    <div class="section-head">
+      <h2 class="display">our project gallery</h2>
+      <p>A cross-section of the retirement, townhouse and duplex developments we've delivered for our commercial partners.</p>
+    </div>
+
+    <div class="filters">
+      <div class="filter active">All projects</div>
+      <div class="filter">Retirement living</div>
+      <div class="filter">Townhouses</div>
+      <div class="filter">Duplex &amp; knock-down rebuild</div>
+    </div>
+
+    <div class="gallery">
+      <div class="card">
+        <div class="ph"><div class="ph-label">Retirement village — street or aerial photo</div></div>
+        <div class="card-body">
+          <div class="card-tag">Retirement living</div>
+          <h3>Village Green Estate</h3>
+          <div class="card-meta">
+            <span><b>300+</b>homes</span>
+            <span><b>Sunshine Coast</b>location</span>
+            <span><b>Complete</b>status</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ph"><div class="ph-label">Townhouse block — facade or streetscape photo</div></div>
+        <div class="card-body">
+          <div class="card-tag">Townhouses</div>
+          <h3>Lakeside Terraces</h3>
+          <div class="card-meta">
+            <span><b>58</b>townhouses</span>
+            <span><b>North Brisbane</b>location</span>
+            <span><b>Complete</b>status</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ph"><div class="ph-label">Townhouse block — facade or streetscape photo</div></div>
+        <div class="card-body">
+          <div class="card-tag">Townhouses</div>
+          <h3>Birtinya Row</h3>
+          <div class="card-meta">
+            <span><b>48</b>townhouses</span>
+            <span><b>Sunshine Coast</b>location</span>
+            <span><b>Complete</b>status</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ph"><div class="ph-label">Duplex pair — completed facade photo</div></div>
+        <div class="card-body">
+          <div class="card-tag">Duplex &amp; knock-down rebuild</div>
+          <h3>Nirimba Duplex Program</h3>
+          <div class="card-meta">
+            <span><b>Multiple</b>sites</span>
+            <span><b>South East QLD</b>location</span>
+            <span><b>Ongoing</b>status</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ph"><div class="ph-label">Duplex pair — completed facade photo</div></div>
+        <div class="card-body">
+          <div class="card-tag">Duplex &amp; knock-down rebuild</div>
+          <h3>Moffat DKR Program</h3>
+          <div class="card-meta">
+            <span><b>Multiple</b>sites</span>
+            <span><b>Sunshine Coast</b>location</span>
+            <span><b>Ongoing</b>status</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="ph"><div class="ph-label">Retirement village — communal facilities photo</div></div>
+        <div class="card-body">
+          <div class="card-tag">Retirement living</div>
+          <h3>Aura Retirement Precinct</h3>
+          <div class="card-meta">
+            <span><b>—</b>homes</span>
+            <span><b>Sunshine Coast</b>location</span>
+            <span><b>In delivery</b>status</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="capability">
+  <div class="wrap section">
+    <div class="cap-grid">
+      <div>
+        <h2 class="display" style="font-size:30px; margin-bottom:36px; max-width:400px;">why developers build with us</h2>
+        <div class="cap-list">
+          <div class="cap-item">
+            <div class="tag">Capability</div>
+            <div>
+              <h3>Design and construct, in-house</h3>
+              <p>Our own design, estimating and construction teams work from a single set of drawings, so your program isn't held up waiting on external consultants.</p>
+            </div>
+          </div>
+          <div class="cap-item">
+            <div class="tag">Certainty</div>
+            <div>
+              <h3>Fixed-price delivery at scale</h3>
+              <p>The same upfront pricing discipline behind our Total Package residential offer applies across multi-lot contracts, so your feasibility numbers hold.</p>
+            </div>
+          </div>
+          <div class="cap-item">
+            <div class="tag">Selections</div>
+            <div>
+              <h3>Selection studio for bulk finishes</h3>
+              <p>Our in-house design studio handles finish schedules across an entire precinct, keeping every dwelling consistent without slowing handover.</p>
+            </div>
+          </div>
+          <div class="cap-item">
+            <div class="tag">Delivery</div>
+            <div>
+              <h3>One point of contact, start to finish</h3>
+              <p>A dedicated project lead manages trades, staging and handover across the whole site, reporting directly to you throughout the build.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="ph cap-image">
+        <div class="ph-label">Supporting photo — site team, framing stage, or handover day across a multi-lot site</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="enquiry" id="enquiry">
+  <div class="wrap">
+    <div class="enquiry-grid">
+      <div>
+        <h2 class="display">discuss your next development</h2>
+        <p>Tell us about your site and what you're looking to deliver — retirement living, townhouses, duplexes or a knock-down rebuild program — and a member of our commercial team will be in touch.</p>
+        <div class="enquiry-contact">
+          <div><b>Phone</b> — 1800 300 424</div>
+          <div><b>Email</b> — commercial@integralehomes.com.au</div>
+        </div>
+      </div>
+      <form onsubmit="return false;">
+        <div class="row2">
+          <div><label>First name</label><input type="text"></div>
+          <div><label>Last name</label><input type="text"></div>
+        </div>
+        <div class="row2">
+          <div><label>Company</label><input type="text"></div>
+          <div><label>Phone</label><input type="tel"></div>
+        </div>
+        <div><label>Email</label><input type="email"></div>
+        <div>
+          <label>Project type</label>
+          <select>
+            <option>Retirement living</option>
+            <option>Townhouses</option>
+            <option>Duplex / knock-down rebuild</option>
+            <option>Other multi-unit development</option>
+          </select>
+        </div>
+        <div><label>Tell us about your site</label><textarea></textarea></div>
+        <button class="submit" type="submit">Send enquiry</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap foot-row">
+    <div>© Integrale Homes — Master Builders, South East Queensland</div>
+    <div>Projects mockup — for internal review</div>
+  </div>
+</footer>
+
+</body>
+</html>
