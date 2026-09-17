@@ -213,6 +213,18 @@
   footer{border-top:0.5px solid var(--line); padding:40px 0; }
   .foot-row{display:flex; justify-content:space-between; align-items:center; font-size:13px; color:var(--ink-faint);}
 
+
+  .ph-photo{
+    position:absolute; inset:0; width:100%; height:100%;
+    object-fit:cover;
+  }
+  .ph.has-photo::before{display:none;}
+  .ph.has-photo .ph-label{display:none;}
+  .ph-label code{
+    background:rgba(139,107,61,0.12); padding:2px 6px; border-radius:3px;
+    font-size:11.5px;
+  }
+
   @media (max-width:920px){
     .wrap{padding:0 20px;}
     .hero h1{font-size:36px;}
@@ -257,7 +269,8 @@
   </div>
   <div class="wrap">
     <div class="ph hero-image">
-      <div class="ph-label">Hero photograph — aerial or street view of a completed retirement village or townhouse precinct</div>
+      <img class="ph-photo" src="images/hero.jpg" alt="Hero photo — aerial or street view" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')">
+          <div class="ph-label">Add <code>images/hero.jpg</code> to replace this</div>
     </div>
   </div>
 </div>
@@ -301,7 +314,8 @@
 
     <div class="gallery">
       <div class="card">
-        <div class="ph"><div class="ph-label">Retirement village — street or aerial photo</div></div>
+        <div class="ph"><img class="ph-photo" src="images/retirement-village.jpg" alt="Village Green Estate photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')">
+          <div class="ph-label">Add <code>images/retirement-village.jpg</code> to replace this</div></div>
         <div class="card-body">
           <div class="card-tag">Retirement living</div>
           <h3>Village Green Estate</h3>
@@ -314,7 +328,7 @@
       </div>
 
       <div class="card">
-        <div class="ph"><div class="ph-label">Townhouse block — facade or streetscape photo</div></div>
+        <div class="ph"><img class="ph-photo" src="images/lakeside-terraces.jpg" alt="Lakeside Terraces photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')"><div class="ph-label">Add <code>images/lakeside-terraces.jpg</code> to replace this</div></div>
         <div class="card-body">
           <div class="card-tag">Townhouses</div>
           <h3>Lakeside Terraces</h3>
@@ -327,7 +341,7 @@
       </div>
 
       <div class="card">
-        <div class="ph"><div class="ph-label">Townhouse block — facade or streetscape photo</div></div>
+        <div class="ph"><img class="ph-photo" src="images/birtinya-row.jpg" alt="Birtinya Row photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')"><div class="ph-label">Add <code>images/birtinya-row.jpg</code> to replace this</div></div>
         <div class="card-body">
           <div class="card-tag">Townhouses</div>
           <h3>Birtinya Row</h3>
@@ -340,7 +354,7 @@
       </div>
 
       <div class="card">
-        <div class="ph"><div class="ph-label">Duplex pair — completed facade photo</div></div>
+        <div class="ph"><img class="ph-photo" src="images/nirimba-duplex.jpg" alt="Nirimba Duplex Program photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')"><div class="ph-label">Add <code>images/nirimba-duplex.jpg</code> to replace this</div></div>
         <div class="card-body">
           <div class="card-tag">Duplex &amp; knock-down rebuild</div>
           <h3>Nirimba Duplex Program</h3>
@@ -353,7 +367,7 @@
       </div>
 
       <div class="card">
-        <div class="ph"><div class="ph-label">Duplex pair — completed facade photo</div></div>
+        <div class="ph"><img class="ph-photo" src="images/moffat-duplex.jpg" alt="Moffat DKR Program photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')"><div class="ph-label">Add <code>images/moffat-duplex.jpg</code> to replace this</div></div>
         <div class="card-body">
           <div class="card-tag">Duplex &amp; knock-down rebuild</div>
           <h3>Moffat DKR Program</h3>
@@ -366,7 +380,8 @@
       </div>
 
       <div class="card">
-        <div class="ph"><div class="ph-label">Retirement village — communal facilities photo</div></div>
+        <div class="ph"><img class="ph-photo" src="images/aura-retirement.jpg" alt="Aura Retirement Precinct photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')">
+          <div class="ph-label">Add <code>images/aura-retirement.jpg</code> to replace this</div></div>
         <div class="card-body">
           <div class="card-tag">Retirement living</div>
           <h3>Aura Retirement Precinct</h3>
@@ -418,7 +433,8 @@
         </div>
       </div>
       <div class="ph cap-image">
-        <div class="ph-label">Supporting photo — site team, framing stage, or handover day across a multi-lot site</div>
+        <img class="ph-photo" src="images/capability.jpg" alt="Capability section photo" onerror="this.remove()" onload="this.closest('.ph').classList.add('has-photo')">
+          <div class="ph-label">Add <code>images/capability.jpg</code> to replace this</div>
       </div>
     </div>
   </div>
